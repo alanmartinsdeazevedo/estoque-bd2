@@ -45,7 +45,7 @@ O sistema permite o gerenciamento completo de um estoque através de três entid
 
 ### 1. Clonar o repositório
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone https://github.com/alanmartinsdeazevedo/estoque-bd2.git
 cd estoque-bd2
 ```
 
@@ -55,7 +55,7 @@ npm install
 ```
 
 ### 3. Configurar MongoDB
-Certifique-se de que o MongoDB esteja rodando localmente na porta padrão (27017).
+O MongoDB deve estar rodando localmente na porta padrão (27017).
 
 **No Ubuntu/WSL:**
 ```bash
