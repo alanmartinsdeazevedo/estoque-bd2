@@ -84,6 +84,23 @@ npx prisma generate
 npm run dev
 ```
 
+## Screenshots do Sistema
+
+### Página Inicial
+![Página Inicial](assets/screenshot/Screenshot_3.png)
+
+### Gerenciamento de Fornecedores
+![Fornecedores](assets/screenshot/Screenshot_2.png)
+
+### Gerenciamento de Produtos
+![Produtos](assets/screenshot/Screenshot_4.png)
+
+### Controle de Entradas
+![Entradas](assets/screenshot/Screenshot_7.png)
+
+### API
+![API](assets/screenshot/Screenshot_5.png)
+
 ## Como usar o sistema
 
 ### 1. Gerenciar Fornecedores
