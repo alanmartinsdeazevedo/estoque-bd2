@@ -1,61 +1,122 @@
-# TypeScript Next.js example
+# Sistema de Controle de Estoque
 
-This is a really simple project that shows the usage of Next.js with TypeScript.
+Controle de estoque desenvolvido para a disciplina de Banco de Dados II, implementando operações CRUD com relacionamentos entre entidades usando MongoDB.
 
-## Deploy your own
+## Descrição do Projeto
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-typescript&project-name=with-typescript&repository-name=with-typescript)
+O sistema permite o gerenciamento completo de um estoque através de três entidades principais:
+- **Fornecedores**: Cadastro e gerenciamento de fornecedores
+- **Produtos**: Cadastro de produtos vinculados aos fornecedores  
+- **Entradas**: Controle de entradas de estoque por produto
 
-## How to use it?
+## Tecnologias Utilizadas
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+- **Frontend**: Next.js 15
+- **Linguagem**: TypeScript
+- **Banco de Dados**: MongoDB
+- **ORM**: Prisma
+- **Estilização**: CSS
+
+## Funcionalidades
+
+### CRUD Completo
+- **Create**: Criar novos registros
+- **Read**: Listar e visualizar registros
+- **Update**: Editar registros existentes
+- **Delete**: Excluir registros
+
+### Relacionamentos
+- Produtos vinculados a Fornecedores (N:1)
+- Entradas vinculadas a Produtos (N:1)
+- Consultas com dados relacionados
+
+### API REST
+- Endpoints para todas as entidades
+- Operações HTTP (GET, POST, PUT, DELETE)
+- Validação de dados
+
+## Pré-requisitos
+
+- Node.js (versão 18 ou superior)
+- MongoDB (versão 6.0 ou superior)
+- npm ou yarn
+
+## Como instalar e executar
+
+### 1. Clonar o repositório
+```bash
+git clone <URL_DO_REPOSITORIO>
+cd estoque-bd2
+```
+
+### 2. Instalar dependências
+```bash
+npm install
+```
+
+### 3. Configurar MongoDB
+Certifique-se de que o MongoDB esteja rodando localmente na porta padrão (27017).
+
+**No Ubuntu/WSL:**
+```bash
+# Instalar MongoDB
+sudo apt update
+sudo apt install -y mongodb-org
+
+# Iniciar MongoDB
+sudo systemctl start mongod
+sudo systemctl enable mongod
+```
+
+### 4. Configurar variáveis de ambiente
+O arquivo `.env` está configurado para MongoDB local:
+```env
+DATABASE_URL="mongodb://localhost:27017/estoque"
+```
+
+### 5. Gerar cliente Prisma
+```bash
+npx prisma generate
+```
+
+### 6. Executar o projeto
+```bash
+npm run dev
+```
+
+## Como usar o sistema
+
+### 1. Gerenciar Fornecedores
+- Acesse `/fornecedores`
+- Cadastre fornecedores com: nome, email, telefone, endereço
+- Edite ou exclua fornecedores
+
+### 2. Gerenciar Produtos  
+- Acesse `/produtos`
+- Cadastre produtos vinculados a fornecedores
+- Informe: nome, descrição, preço, categoria
+- Edite ou exclua produtos
+
+### 3. Controlar Entradas
+- Acesse `/entradas`
+- Registre entradas de estoque por produto
+- Informe: quantidade e produto
+- Edite ou exclua entradas
+
+### 4. API REST
+Endpoints da API:
+- `GET|POST /api/fornecedores`
+- `GET|PUT|DELETE /api/fornecedores/[id]`
+- `GET|POST /api/produtos`  
+- `GET|PUT|DELETE /api/produtos/[id]`
+- `GET|POST /api/entradas`
+- `GET|PUT|DELETE /api/entradas/[id]`
+
+## Comandos Disponíveis
 
 ```bash
-npx create-next-app --example with-typescript with-typescript-app
+npm run dev        # Executar em desenvolvimento
+npm run build      # Build para produção
+npm run start      # Executar build de produção
+npm run type-check # Verificação de tipos TypeScript
 ```
-
-```bash
-yarn create next-app --example with-typescript with-typescript-app
-```
-
-```bash
-pnpm create next-app --example with-typescript with-typescript-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-## Notes
-
-This example shows how to integrate the TypeScript type system into Next.js. Since TypeScript is supported out of the box with Next.js, all we have to do is to install TypeScript.
-
-```shell
-npm install --save-dev typescript
-```
-
-```shell
-yarn install --save-dev typescript
-```
-
-```shell
-pnpm install --save-dev typescript
-```
-
-To enable TypeScript's features, we install the type declarations for React and Node.
-
-```shell
-npm install --save-dev @types/react @types/react-dom @types/node
-```
-
-```shell
-yarn install --save-dev @types/react @types/react-dom @types/node
-```
-
-```shell
-pnpm install --save-dev @types/react @types/react-dom @types/node
-```
-
-When we run `next dev` the next time, Next.js will start looking for any `.ts` or `.tsx` files in our project and builds it. It even automatically creates a `tsconfig.json` file for our project with the recommended settings.
-
-Next.js has built-in TypeScript declarations, so we'll get autocompletion for Next.js' modules straight away.
-
-A `type-check` script is also added to `package.json`, which runs TypeScript's `tsc` CLI in `noEmit` mode to run type-checking separately. You can then include this, for example, in your `test` scripts.
